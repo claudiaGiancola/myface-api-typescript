@@ -3,6 +3,7 @@ import cors from "cors";
 import "express-async-errors";
 import postRoutes from "./routes/postRoutes";
 import userRoutes from "./routes/userRoutes";
+import { toEditorSettings } from "typescript";
 
 const app = express();
 const port = process.env['PORT'] || 3001;
@@ -21,3 +22,4 @@ app.get('', (request, response) => {
 app.listen(port, () => {
     console.log(`Server started and is running at http://localhost:${port}`);
 });
+
