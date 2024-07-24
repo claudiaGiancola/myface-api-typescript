@@ -1,76 +1,46 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+
+interface PostModel {
+    id: number,
+    message: string,
+    imageUrl: string,
+    createdAt: string,
+    postedBy: string,
+}
 
 export function PostsPage() {
 
-    // const [myData, setMyData] = useState(null);
-    // const [myData, setMyData] = useState({
-    //     data: [],
-    //     loading: true
-    // });
-    const [myData, setMyData] = useState([]);
+    const [myData, setMyData] = useState<PostModel[] | null>(null);
 
     const getPostsPage = async () => {
         const response = await fetch("http://localhost:3001/posts");
-        const result = await response.json();
-        setMyData(result);
+        const data = await response.json();
+        const results = data.results;
+
+        console.log(results);
+        setMyData(results);
     }
-
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //       const response = await fetch('http://localhost:3001/posts');
-    //       const result = await response.json();
-    //       setMyData({
-    //         data: result,
-    //         loading: false
-    //       });
-    //     };
-
-    //     fetchData();
-    //   }, []);
 
     useEffect(() => {
         getPostsPage();
-        console.log(result);
     }, [])
 
-    // useEffect(() => {
-    //     fetch("http://localhost:3001/posts", { method: "GET" })
-    //         .then(response => {
-    //             return response.json();
-    //         })
-    //         .then(data => {
-    //             console.log(data);
-    //             setMyData(data);
-    //         })
-    // }, [])
-
-
-
-    // useEffect(() => {
-    //     fetch("http://localhost:3001/posts")
-    //     .then(response => response.json())
-    //     .then(data => setMyData(data.message))
-    //   },[])
-
-
-    // if (myData.loading) {
-    //     return <div>Loading...</div>;
-    //   }
+    if (!myData) {
+        return <div>Loading...</div>;
+    }
 
     return (
-        <>
-            <div>
-                Ciao
-                {/* {myData && {myData}} */}
-
-                {/* {myData} */}
-
-                {myData.map((data: any) => {
-                    return <div>{data.message}</div>
-                })}
-
-            </div>
-        </>
-    );
+        <div>
+            {myData.map((post) => (
+                <div>
+                    <h4>Posted by: {post.postedBy.username}</h4>
+                    <p>{post.id}</p>
+                    <p>{post.message}</p>
+                    <img src={post.imageUrl}/>
+                    <p>{post.createdAt}</p>
+                </div>
+            ))}
+        </div>
+    )
 
 }
