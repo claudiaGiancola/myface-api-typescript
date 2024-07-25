@@ -5,10 +5,24 @@
   text-align: center;
 }
 
+.cover-pic {
+  width: 80vw;
+  height: 30vh;
+}
+
 .profile-pic {
   width: 100px;
 }
 
 .post-img {
   width: 200px;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 4px;
 }

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Post, PostModel } from "./posts";
 
 export interface User {
@@ -9,7 +9,9 @@ export interface User {
     email: string,
     profileImageUrl: string,
     coverImageUrl: string,
-    posts: Array<PostModel>
+    posts: Array<PostModel>,
+    likes: Array<PostModel>,
+    dislikes: Array<PostModel>
 }
 
 export interface UserModel {
@@ -50,9 +52,9 @@ export function UsersPage() {
         <div>
             {userData.map((user) => (
                 <div>
-                    <NavLink to={`/users/${user.id}`}>
+                    <Link to={`/users/${user.id}`}>
                     <p>{user.name}</p>
-                    <img className="profile-pic" src={user.profileImageUrl}/></NavLink>
+                    <img className="profile-pic" src={user.profileImageUrl}/></Link>
                 </div>
             ))}
         </div>
