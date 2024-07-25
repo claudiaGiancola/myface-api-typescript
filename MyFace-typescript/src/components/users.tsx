@@ -1,17 +1,18 @@
 import { useState, useEffect } from "react";
-import { User } from "./posts"
+import { NavLink } from "react-router-dom";
+import { Post, PostModel } from "./posts";
 
-interface Post {
+export interface User {
     id: number,
-    message: string,
-    imageUrl: string,
-    createdAt: string,
-    postedBy: User,
-    likedBy: Array<User>,
-    dislikedBy: Array<User>
+    name: string,
+    username: string,
+    email: string,
+    profileImageUrl: string,
+    coverImageUrl: string,
+    posts: Array<PostModel>
 }
 
-interface UserModel {
+export interface UserModel {
     id: number,
     name: string,
     username: string,
@@ -49,11 +50,13 @@ export function UsersPage() {
         <div>
             {userData.map((user) => (
                 <div>
+                    <NavLink to={`/users/${user.id}`}>
                     <p>{user.name}</p>
-                    <img src={user.profileImageUrl}/>
+                    <img className="profile-pic" src={user.profileImageUrl}/></NavLink>
                 </div>
             ))}
         </div>
+        
         </>
     )
 

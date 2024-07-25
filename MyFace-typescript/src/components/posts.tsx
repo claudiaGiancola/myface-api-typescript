@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
-import { getPagesOfPosts } from "../../../src/services/postService.ts"
+// import { getPageOfPosts } from "../../../src/services/postService.ts";
+import { User } from "./users";
 
-
-export interface User {
+export interface Post {
     id: number,
-    name: string,
-    username: string,
-    email: string,
-    profileImageUrl: string,
-    coverImageUrl: string
+    message: string,
+    imageUrl: string,
+    createdAt: string,
+    postedBy: User,
+    likedBy: Array<User>,
+    dislikedBy: Array<User>
 }
 
 export interface PostModel {
@@ -20,6 +21,13 @@ export interface PostModel {
     likedBy: Array<User>,
     dislikedBy: Array<User>
 }
+
+// export interface PageOfPosts {
+//     results: Array<T>,
+//     next: string | null,
+//     previous: string | null,
+//     total: any
+// }
 
 export function PostsPage() {
 
@@ -49,7 +57,7 @@ export function PostsPage() {
                 <div>
                     <h4>Posted by: {post.postedBy.username}</h4>
                     <p>{post.message}</p>
-                    <img src={post.imageUrl} />
+                    <img className="post-img" src={post.imageUrl} />
                     <p>{post.createdAt}</p>
                     {post.likedBy.length === 1 ? (
                         <p>{post.likedBy.length} like</p>
@@ -67,8 +75,8 @@ export function PostsPage() {
 
         <div className="page-turner">
 
-        {/* <a href={getPagesOfPosts.previous}>Previous</a>
-        <a href={getPagesOfPosts.next}>Next</a> */}
+        {/* <a href={getPageOfPosts.previous}>Previous</a>
+        <a href={getPageOfPosts.next}>Next</a> */}
 
 {/*         
             {getPagesOfPosts.previous ? (
