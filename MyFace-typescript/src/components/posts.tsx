@@ -1,11 +1,22 @@
 import { useState, useEffect } from "react";
 
+interface User {
+    id: number,
+    name: string,
+    username: string,
+    email: string,
+    profileImageUrl: string,
+    coverImageUrl: string
+}
+
 interface PostModel {
     id: number,
     message: string,
     imageUrl: string,
     createdAt: string,
-    postedBy: string,
+    postedBy: User,
+    likedBy: Array<User>,
+    dislikedBy: Array<User>
 }
 
 export function PostsPage() {
@@ -34,10 +45,19 @@ export function PostsPage() {
             {myData.map((post) => (
                 <div>
                     <h4>Posted by: {post.postedBy.username}</h4>
-                    <p>{post.id}</p>
                     <p>{post.message}</p>
-                    <img src={post.imageUrl}/>
+                    <img src={post.imageUrl} />
                     <p>{post.createdAt}</p>
+                    {post.likedBy.length === 1 ? (
+                        <p>{post.likedBy.length} like</p>
+                    ) : (
+                        <p>{post.likedBy.length} likes</p>
+                    )}
+                    {post.likedBy.length === 1 ? (
+                        <p>{post.dislikedBy.length} dislike</p>
+                    ) : (
+                        <p>{post.dislikedBy.length} dislikes</p>
+                    )}
                 </div>
             ))}
         </div>
