@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
+import { getPagesOfPosts } from "../../../src/services/postService.ts"
 
-interface User {
+
+export interface User {
     id: number,
     name: string,
     username: string,
@@ -9,7 +11,7 @@ interface User {
     coverImageUrl: string
 }
 
-interface PostModel {
+export interface PostModel {
     id: number,
     message: string,
     imageUrl: string,
@@ -41,6 +43,7 @@ export function PostsPage() {
     }
 
     return (
+        <>
         <div>
             {myData.map((post) => (
                 <div>
@@ -61,6 +64,23 @@ export function PostsPage() {
                 </div>
             ))}
         </div>
+
+        <div className="page-turner">
+
+        {/* <a href={getPagesOfPosts.previous}>Previous</a>
+        <a href={getPagesOfPosts.next}>Next</a> */}
+
+{/*         
+            {getPagesOfPosts.previous ? (
+                <a href={getPagesOfPosts.previous}>Previous</a>
+            ) : (
+                <div></div>
+            ) }; */}
+            
+
+        </div>
+
+        </>
     )
 
 }
