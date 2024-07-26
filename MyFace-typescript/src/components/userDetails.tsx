@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { User } from "./users";
-import { UserModel } from "./users";
 import { useParams } from "react-router-dom";
 
 export function UserDetails() {
@@ -38,20 +37,9 @@ export function UserDetails() {
             <div className="flex-container">
                 {detailsData.posts.map((post) => (
                     <div>
-                        {/* <h4>Posted by: {post.postedBy.username}</h4> */}
                         <p>{post.message}</p>
                         <img className="post-img" src={post.imageUrl} />
                         <p>{post.createdAt}</p>
-                        {/* {post.likedBy.length === 1 ? (
-                        <p>{post.likedBy.length} like</p>
-                    ) : (
-                        <p>{post.likedBy.length} likes</p>
-                    )} */}
-                        {/* {post.likedBy.length === 1 ? (
-                        <p>{post.dislikedBy.length} dislike</p>
-                    ) : (
-                        <p>{post.dislikedBy.length} dislikes</p>
-                    )} */}
                     </div>
                 ))}
             </div>

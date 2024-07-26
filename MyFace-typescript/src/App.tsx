@@ -8,6 +8,7 @@ import { UsersPage } from './components/users.tsx'
 import { UserDetails } from './components/userDetails.tsx';
 
 
+
 function App() {
 
   return (
@@ -18,8 +19,8 @@ function App() {
       </div>
 
       <Routes>
-        <Route path="*" element={<HomePage />} />
-        <Route path="/posts" element={<PostsPage />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/posts/" element={<PostsPage />} />
         <Route path="/users" element={<UsersPage />} />
         <Route path="/users/:id" element={<UserDetails />} />
       </Routes>
