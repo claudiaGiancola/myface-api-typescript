@@ -7,6 +7,7 @@ To get setup, download this code, and then run the following commands in the roo
 npm install
 npm run migrate
 npm run seed
+npm i --save-dev @types/react
 ```
 
 - `npm install` downloads all the libraries that we depend on.
