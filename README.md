@@ -18,10 +18,11 @@ Inside the directory "MyFace-typescript" install React Router:
 - `npm install react react-dom`
 
 
-Once you have run all of those, we can simply start the app with
-```shell
-npm start
-```
+Once you have run all of those, start the backend in the root directory
+`npm start`
+And on a separate terminal start the frontend within the frontend directory (MyFace-typescript)
+`npm run dev`
+
 
 This should start the app, and we can see it by going to http://localhost:3001 in the browser.
 
