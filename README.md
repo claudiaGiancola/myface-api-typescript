@@ -7,12 +7,16 @@ To get setup, download this code, and then run the following commands in the roo
 npm install
 npm run migrate
 npm run seed
-npm i --save-dev @types/react
 ```
 
 - `npm install` downloads all the libraries that we depend on.
 - `npm run migrate` setups a database for us to use.
 - `npm run seed` adds some sample data to our database.
+- `npm i --save-dev @types/react`
+
+Inside the directory "MyFace-typescript" install React Router:
+- `npm install react react-dom`
+
 
 Once you have run all of those, we can simply start the app with
 ```shell
